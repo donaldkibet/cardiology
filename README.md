@@ -1,9 +1,27 @@
-### Cardiology MicroFrontend
+# Cardiology Mircofrontend
 
-A simple project to implement cardilogy patient-chart implemented as a micro-frontend using openmrs
+This is a ([lerna](https://lerna.js.org)) project containing the core packages for cardiology microfrontend. It contains packages for forms, reports and patient dashboard
 
-### Instructions
+## Available packages
 
-1. Install node any version after v10
-2. Clone the project and install dependencies ``` git clone https://github.com/donaldkibet/cardiology npm install ```
-3. Open terminal and serve the MF ``` npm run serve -- --https ```
+1. cardiology form
+2. Patient Dashboard
+3. Cardiolgy report
+
+### Getting started
+
+1. To start the any package 
+
+```sh 
+    yarn serve name='package-name'
+```
+
+by default `esm-patient-dashboard` is selected
+
+2. To lint the packages
+
+```sh
+    yarn lint
+```
+
+

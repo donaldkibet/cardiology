@@ -21,7 +21,7 @@ function setupOpenMRS() {
 
   return {
     lifecycle: getAsyncLifecycle(() => import("./root.component"), options),
-    activate: "mtrh-cardiology"
+    activate: "mtrh-cardiology",
   };
 }
 
