@@ -1,11 +1,6 @@
 {
   "name": "@mtrh/esm-cardiology",
   "private": true,
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged && lerna run lint && lerna run test && lerna run typescript"
-    }
-  },
   "workspaces": [
     "packages/*"
   ],
@@ -14,17 +9,14 @@
     "lint": "lerna run lint && lerna run test && lerna run typescript",
     "prettier": "prettier \"packages/**/src/**/*\" --write"
   },
-  "peerDependencies": {
-    "@openmrs/esm-api": "3.x",
-    "@openmrs/esm-config": "3.x",
-    "@openmrs/esm-error-handling": "3.x",
-    "@openmrs/esm-react-utils": "3.x",
-    "i18next": "^19.6.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-i18next": "^11.7.0",
-    "rxjs": "^6.5.4",
-    "single-spa": "^4.4.1"
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged && lerna run lint && lerna run test && lerna run typescript"
+    }
+  },
+  "dependencies": {
+    "-": "^0.0.1",
+    "D": "^1.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.11.4",
@@ -37,6 +29,11 @@
     "@testing-library/react": "^11.2.3",
     "@testing-library/user-event": "^12.0.11",
     "@types/jest": "^26.0.10",
+    "@types/lodash-es": "^4.17.3",
+    "@types/react": "^16.9.49",
+    "@types/react-dom": "^16.9.8",
+    "@types/react-router-dom": "^5.1.5",
+    "@types/webpack-env": "^1.15.2",
     "autoprefixer": "^9.6.1",
     "babel-eslint": "^11.0.0-beta.2",
     "babel-jest": "^26.3.0",
@@ -71,8 +68,16 @@
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
   },
-  "dependencies": {
-    "-": "^0.0.1",
-    "D": "^1.0.0"
+  "peerDependencies": {
+    "@openmrs/esm-api": "3.x",
+    "@openmrs/esm-config": "3.x",
+    "@openmrs/esm-error-handling": "3.x",
+    "@openmrs/esm-react-utils": "3.x",
+    "i18next": "^19.6.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-i18next": "^11.7.0",
+    "rxjs": "^6.5.4",
+    "single-spa": "^4.4.1"
   }
 }

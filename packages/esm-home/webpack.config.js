@@ -8,21 +8,21 @@ const cssLoader = {
   loader: "css-loader",
   options: {
     modules: {
-      localIdentName: "esm-patient__[name]__[local]___[hash:base64:5]",
+      localIdentName: "esm-home__[name]__[local]___[hash:base64:5]",
     },
   },
 };
 
-module.exports = (env) => ({
+module.exports = {
   entry: [
     path.resolve(__dirname, "src/set-public-path.ts"),
     path.resolve(__dirname, "src/index.ts"),
   ],
   output: {
-    filename: "mtrh-cardiology-app.js",
+    filename: "openmrs-esm-home-app.js",
     libraryTarget: "system",
     path: path.resolve(__dirname, "dist"),
-    jsonpFunction: "webpackJsonp_mtrh_cardiology_app",
+    jsonpFunction: "webpackJsonp_openmrs_esm_home",
   },
   module: {
     rules: [
@@ -46,6 +46,14 @@ module.exports = (env) => ({
         test: /\.s[ac]ss$/i,
         use: ["style-loader", cssLoader, "sass-loader"],
       },
+      {
+        test: /\.(png|jpe?g)$/i,
+        use: [
+          {
+            loader: "file-loader",
+          },
+        ],
+      },
     ],
   },
   devtool: "sourcemap",
@@ -60,4 +68,4 @@ module.exports = (env) => ({
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js"],
   },
-});
+};

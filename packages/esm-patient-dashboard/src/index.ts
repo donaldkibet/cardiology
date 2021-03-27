@@ -1,4 +1,7 @@
-import { getAsyncLifecycle } from "@openmrs/esm-react-utils";
+import {
+  getAsyncExtensionLifecycle,
+  getAsyncLifecycle,
+} from "@openmrs/esm-react-utils";
 import { defineConfigSchema, validators, Type } from "@openmrs/esm-config";
 import { backendDependencies } from "./openmrs-backend-dependencies";
 
@@ -13,7 +16,7 @@ function setupOpenMRS() {
   const moduleName = "@mtrh/cardilogy-app";
 
   const options = {
-    featureName: "login",
+    featureName: "mtrh-reports",
     moduleName,
   };
 
@@ -22,6 +25,16 @@ function setupOpenMRS() {
   return {
     lifecycle: getAsyncLifecycle(() => import("./root.component"), options),
     activate: "mtrh-cardiology",
+    extensions: [
+      {
+        id: "mtrh-reports",
+        slot: "home-page-buttons",
+        load: getAsyncExtensionLifecycle(
+          () => import("./links/report-links.component"),
+          options
+        ),
+      },
+    ],
   };
 }
 

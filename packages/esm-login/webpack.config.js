@@ -7,22 +7,20 @@ const { peerDependencies } = require("./package.json");
 const cssLoader = {
   loader: "css-loader",
   options: {
-    modules: {
-      localIdentName: "esm-patient__[name]__[local]___[hash:base64:5]",
-    },
+    modules: true,
   },
 };
 
-module.exports = (env) => ({
+module.exports = {
   entry: [
     path.resolve(__dirname, "src/set-public-path.ts"),
     path.resolve(__dirname, "src/index.ts"),
   ],
   output: {
-    filename: "mtrh-cardiology-app.js",
+    filename: "openmrs-esm-login-app.js",
     libraryTarget: "system",
     path: path.resolve(__dirname, "dist"),
-    jsonpFunction: "webpackJsonp_mtrh_cardiology_app",
+    jsonpFunction: "webpackJsonp_openmrs_esm_login",
   },
   module: {
     rules: [
@@ -60,4 +58,4 @@ module.exports = (env) => ({
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js"],
   },
-});
+};
