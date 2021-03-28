@@ -34,3 +34,30 @@ jobs:
           name: dist
           path: |
             dist
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    needs: build
+
+    if: ${{ github.event_name == 'push' }}
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
+      - name: Compute Timestamp
+        run: echo "TIMESTAMP=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
+      - name: Prepare Directory
+        shell: bash
+        run: |
+          mkdir -p dist/${{ env.ESM_NAME }}/${{ env.TIMESTAMP }}_${{ github.sha }}
+          mv dist/*.* dist/${{ env.ESM_NAME }}/${{ env.TIMESTAMP }}_${{ github.sha }}/
+      - uses: actions/checkout@master
+      - uses: idlefingers/do-space-sync-action@master
+        with:
+          args: --acl public-read
+        env:
+          SOURCE_DIR: 'dist'
+          SPACE_NAME: ${{ secrets.SPACE_NAME }}
+          SPACE_REGION: ${{ secrets.SPACE_REGION}}
+          SPACE_ACCESS_KEY_ID: ${{ secrets.SPACE_ACCESS_KEY_ID }}
+          SPACE_SECRET_ACCESS_KEY: ${{ secrets.SPACE_SECRET_ACCESS_KEY }}
