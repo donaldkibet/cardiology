@@ -51,7 +51,6 @@ jobs:
         run: |
           mkdir -p dist/${{ env.ESM_NAME }}/${{ env.TIMESTAMP }}_${{ github.sha }}
           mv dist/*.* dist/${{ env.ESM_NAME }}/${{ env.TIMESTAMP }}_${{ github.sha }}/
-      - uses: actions/checkout@master
       - uses: idlefingers/do-space-sync-action@master
         with:
           args: --acl public-read
