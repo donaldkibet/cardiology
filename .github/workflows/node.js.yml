@@ -19,11 +19,14 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: "14.x"
-      - run: npx lerna bootstrap
-      - run: npx lerna run lint
-      - run: npx lerna run typescript
-      - run: npx lerna run test
-      - run: npx lerna run build
+      - run: npm install lerna -g
+      - run: lerna bootstrap
+      - run: cd packages/esm-home && npm install && /home/runner/work/cardiology/cardiology
+      - run: cd packages/esm-login && npm install && /home/runner/work/cardiology/cardiology
+      - run: cd packages/esm-patient-dashboard && npm install && /home/runner/work/cardiology/cardiology
+      - run: lerna run typescript
+      - run: lerna run test
+      - run: lerna run build
       - name: Upload Artifacts
         uses: actions/upload-artifact@v2
         with:
