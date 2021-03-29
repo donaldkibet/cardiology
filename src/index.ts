@@ -7,7 +7,7 @@ function setupOpenMRS() {
     const moduleName = '@mtrh/esm-patient-dashboard-app';
 
     const options = {
-        featureName: 'esm-drug-order',
+        featureName: 'esm-patient-dashboard-app',
         moduleName,
     };
 
