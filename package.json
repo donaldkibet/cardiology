@@ -1,114 +1,64 @@
 {
-    "name": "@mtrh/esm-patient-dashboard-app",
-    "version": "0.5.0",
-    "description": "MTRH Cardilogy microfrontend for the OpenMRS SPA",
-    "main": "dist/mtrh-esm-patient-dashboard-app.js",
-    "types": "src/index.ts",
-    "license": "MIT",
-    "homepage": "https://github.com/donaldkibet/cardiology#readme",
-    "scripts": {
-        "start": "openmrs debug --run-project",
-        "serve": "webpack-dev-server",
-        "debug": "npm run serve",
-        "build": "webpack --mode production",
-        "analyze": "webpack --mode=production --env.analyze=true",
-        "lint": "eslint src --ext tsx",
-        "prettier": "prettier --config prettier.config.js --write \"src/**/*.{ts,tsx}\"",
-        "typescript": "tsc",
-        "prepublishOnly": "npm run build",
-        "test": "jest --passWithNoTests",
-        "coverage": "npm test -- --coverage"
-    },
-    "browserslist": [
-        "extends browserslist-config-openmrs"
-    ],
-    "keywords": [
-        "openmrs"
-    ],
-    "publishConfig": {
-        "access": "public"
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "pretty-quick --staged && concurrently 'npm:test' 'npm:typescript' 'npm:lint'"
-        }
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/donaldkibet/cardilogy.git"
-    },
-    "bugs": {
-        "url": "https://github.com/donaldkibet/cardilogy/issues"
-    },
-    "dependencies": {
-        "@carbon/icons-react": "^10.18.0",
-        "carbon-components-react": "^7.25.0",
-        "lodash-es": "^4.17.15",
-        "systemjs-webpack-interop": "^1.1.0"
-    },
-    "peerDependencies": {
-        "@openmrs/esm-framework": "3.x",
-        "carbon-components": "^10.19.0",
-        "carbon-icons": "^7.0.7",
-        "dayjs": "^1.8.16",
-        "react": "^16.9.0",
-        "react-i18next": "^11.3.4"
-    },
-    "devDependencies": {
-        "@babel/core": "^7.5.5",
-        "@babel/plugin-proposal-class-properties": "^7.5.5",
-        "@babel/preset-env": "^7.5.5",
-        "@babel/preset-react": "^7.0.0",
-        "@babel/preset-typescript": "^7.3.3",
-        "@babel/runtime": "^7.12.13",
-        "@openmrs/esm-framework": "next",
-        "@testing-library/jest-dom": "^5.7.0",
-        "@testing-library/react": "^9.5.0",
-        "@types/carbon-components-react": "^7.10.9",
-        "@types/jest": "^24.9.1",
-        "@types/lodash": "^4.14.161",
-        "@types/react": "^16.9.2",
-        "@types/react-dom": "^16.9.0",
-        "@types/react-router": "^5.1.7",
-        "@types/react-router-dom": "^5.1.5",
-        "@types/single-spa-react": "^2.12.0",
-        "@types/webpack-env": "^1.15.1",
-        "@types/yup": "^0.29.3",
-        "babel-eslint": "^10.0.2",
-        "babel-jest": "^24.9.0",
-        "babel-loader": "^8.0.6",
-        "browserslist-config-openmrs": "^1.0.0",
-        "clean-webpack-plugin": "^3.0.0",
-        "concurrently": "^5.0.0",
-        "css-loader": "^3.2.0",
-        "dayjs": "^1.8.16",
-        "eslint": "^7.10.0",
-        "eslint-config-prettier": "^6.13.0",
-        "eslint-config-ts-react-important-stuff": "^3.0.0",
-        "eslint-plugin-prettier": "^3.1.4",
-        "fork-ts-checker-webpack-plugin": "^1.5.0",
-        "husky": "^3.0.4",
-        "i18next": "^19.4.2",
-        "identity-obj-proxy": "^3.0.0",
-        "jest": "^24.9.0",
-        "jest-cli": "^24.9.0",
-        "node-sass": "^4.14.1",
-        "openmrs": "next",
-        "prettier": "^1.18.2",
-        "pretty-quick": "^1.11.1",
-        "react": "^16.9.0",
-        "react-dom": "^16.9.0",
-        "react-i18next": "^11.3.4",
-        "react-router": "^5.0.1",
-        "react-router-dom": "^5.2.0",
-        "rxjs": "^6.6.2",
-        "sass-loader": "^10.0.2",
-        "style-loader": "^1.0.0",
-        "typescript": "^4.0.3",
-        "unistore": "^3.5.2",
-        "webpack": "^4.39.2",
-        "webpack-bundle-analyzer": "^4.4.0",
-        "webpack-cli": "^3.3.7",
-        "webpack-dev-server": "^3.8.0"
+  "name": "@mtrh/esm-oncology",
+  "private": true,
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged && lerna run lint && lerna run test && lerna run typescript"
     }
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "start": "openmrs develop --sources 'packages/esm-*-app/'",
+    "ci:publish": "lerna publish from-package --yes",
+    "ci:prepublish": "lerna publish from-package --no-git-reset --yes --dist-tag next",
+    "ci:release": "lerna version --no-git-tag-version",
+    "ci:prerelease": "lerna version prerelease --no-git-tag-version --yes",
+    "verify": "lerna run lint && lerna run test && lerna run typescript",
+    "prettier": "prettier \"packages/**/src/**/*\" --write"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
+    "@babel/preset-typescript": "^7.10.4",
+    "@babel/runtime": "^7.12.13",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^13.1.1",
+    "@types/jest": "^25.2.3",
+    "@types/webpack-env": "^1.16.0",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.3.0",
+    "babel-loader": "^8.1.0",
+    "browserslist-config-openmrs": "^1.0.1",
+    "clean-webpack-plugin": "^3.0.0",
+    "concurrently": "^5.3.0",
+    "css-loader": "^3.6.0",
+    "dayjs": "^1.8.36",
+    "eslint": "^7.20.0",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-config-ts-react-important-stuff": "^3.0.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "fork-ts-checker-webpack-plugin": "^3.1.1",
+    "husky": "^3.1.0",
+    "i18next": "^19.7.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.4.2",
+    "jest-cli": "^26.4.2",
+    "lerna": "^3.20.2",
+    "openmrs": "next",
+    "prettier": "^1.19.1",
+    "pretty-quick": "^2.0.2",
+    "sass": "^1.29.0",
+    "sass-loader": "^10.1.0",
+    "style-loader": "^1.2.1",
+    "typescript": "^4.0.3",
+    "webpack": "^4.44.2",
+    "webpack-bundle-analyzer": "^3.9.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  }
 }
