@@ -4,7 +4,7 @@ export const configSchema = {
   chooseLocation: {
     enabled: {
       _type: Type.Boolean,
-      _default: true,
+      _default: false,
       _description:
         "Whether to show a 'Choose Location' screen after login. " +
         'If true, the user will be taken to the loginSuccess URL after they ' +
@@ -28,7 +28,7 @@ export const configSchema = {
   logo: {
     src: {
       _type: Type.String,
-      _default: null,
+      _default: 'https://donaldkibet.sfo3.digitaloceanspaces.com/logo-mtrh.jpeg',
       _description: 'A path or URL to an image. Defaults to the OpenMRS SVG sprite.',
     },
     alt: {
