@@ -58,16 +58,17 @@
   "devDependencies": {
     "@openmrs/esm-framework": "next",
     "@types/carbon-components-react": "^7.10.9",
+    "@types/lodash-es": "^4.17.3",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.1",
     "@types/react-router-dom": "^5.1.7",
-    "@types/lodash-es": "^4.17.3",
     "@types/webpack-env": "^1.16.0",
     "dayjs": "^1.8.24",
     "react": "16.x",
     "react-dom": "16.x",
     "react-i18next": "^11.7.2",
     "react-router-dom": "5.x",
-    "rxjs": "^6.6.3"
+    "rxjs": "^6.6.3",
+    "webpack-dev-server": "^3.11.2"
   }
 }
