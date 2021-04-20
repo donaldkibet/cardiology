@@ -66,7 +66,7 @@ const PatientBanner: React.FC<PatientBannerProps> = ({
       <div className={styles.patientBanner}>
         <div className={styles.patientAvatar}>
           <ExtensionSlot
-            extensionSlotName="patient-photo"
+            extensionSlotName="patient-photo-slot"
             state={{ patientUuid: patient.id }}
           />
         </div>
