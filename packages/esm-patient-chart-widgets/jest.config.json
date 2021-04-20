@@ -1,0 +1,29 @@
+{
+  "transform": {
+    "^.+\\.tsx?$": "babel-jest"
+  },
+  "transformIgnorePatterns": [],
+  "moduleNameMapper": {
+    "\\.(s?css)$": "identity-obj-proxy",
+    "\\.(jpg|jpeg|png)$": "<rootDir>/__mocks__/file.mock.ts",
+    "^@carbon/icons-react/es/(.*)$": "@carbon/icons-react/lib/$1",
+    "^carbon-components-react/es/(.*)$": "carbon-components-react/lib/$1",
+    "@openmrs/esm-framework": "@openmrs/esm-framework/mock",
+    "@carbon/charts/interfaces/enums":"<rootDir>/__mocks__/carbon-interface.ts",
+    "^lodash-es/(.*)$": "lodash/$1"
+  },
+  "coverageThreshold": {
+    "global": {
+      "statements": 50,
+      "branches": 50,
+      "functions": 45,
+      "lines": 50
+    }
+  },
+  "setupFilesAfterEnv": [
+    "<rootDir>/src/setupTests.ts"
+  ],
+  "watchPathIgnorePatterns": [
+		"/node_modules/"
+	]
+}
